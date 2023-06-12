@@ -1,6 +1,8 @@
-<% @books.each do |book| %>
+<% @book.each do |book| %>
 <div>
-  <%= image_tag book.get_image %>
+  <%= link_to book_path(book.id) do %>
+    <%= image_tag book.get_image %>
+  <% end %>
   <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
   <p>本の画像：<%= book.title %></p>
   <p>説明：<%= book.body %></p>
