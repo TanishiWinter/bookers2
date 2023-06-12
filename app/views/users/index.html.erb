@@ -1,1 +1,7 @@
-<h1>index</h1>
+<% @user.each do |user| %>
+<div>
+  <p>image：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>name：<%= user.name %></p>
+  <p>Show：<%= user.name %></p>
+</div>
+<% end %>
