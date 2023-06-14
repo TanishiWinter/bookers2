@@ -39,27 +39,31 @@
            <% end %>
          </div>
     <div class="col-md-8 offset-md-1">
-        <h2>Books</h2>
+        <h2>Books detail</h2>
         <table class="table table-hover table-inverse">
           <thead>
-            <tr>title</tr>
-            <tr>opinion</tr>
           </thead>
             <tbody>
               <tr>
                 <td>
-                  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-                  <span><%= @user.name %></span>
+                  <%=link_to user_path(@user.id) do %>
+                    <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+                    <span><%= @user.name %></span>
+                  <% end %>
                 </td>
                 <td><span>
-                  <%=link_to @book.title,  book_path(book.id) %>
+                  <%=link_to @book.title,  book_path(@book.id) %>
                 </span></td>
                 <td><span><%= @book.body %></span></td>
                 <td><span>
-  　              <%= link_to "Edit", edit_book_path(book.id) %>
+                  <% if @book.user == current_user %>
+  　                 <%= link_to "Edit", edit_book_path(@book.id), %>
+  　               <% end %>
 　             </span></td>
                 <td><span>
-                　<%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                  <% if @book.user == current_user %>
+                　   <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                  <% end %>
                 </span></td>
               </tr>
             </tbody>

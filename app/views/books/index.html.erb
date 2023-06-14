@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
   <body>
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <main>
       <div class="Bookers px-5 px-sm-0">
         <div class="row">
@@ -42,10 +50,13 @@
         <h2>Books</h2>
         <table class="table table-hover table-inverse">
           <thead>
-            <tr>title</tr>
-            <tr>opinion</tr>
+            <tr>
+              <th></th>
+              <th>title</th>
+              <th>opinion</th>
+            </tr>
           </thead>
-          <% @book.each do |book| %>
+          <% @books.each do |book| %>
             <tbody>
               <tr>
                 <td>
@@ -56,12 +67,6 @@
                   <%=link_to book.title,  book_path(book.id) %>
                 </span></td>
                 <td><span><%= book.body %></span></td>
-                <td><span>
-  　              <%= link_to "Edit", edit_book_path(book.id) %>
-　             </span></td>
-                <td><span>
-                　<%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-                </span></td>
               </tr>
             </tbody>
           <% end %>
