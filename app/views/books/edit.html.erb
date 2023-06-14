@@ -24,11 +24,11 @@
                  <%= f.text_area :body %>
                </div>
                <div class="form-group">
-                 <%= f.submit 'Update book' %>
+                 <%= f.submit 'Update Book' %>
                </div>
              <% end %>
-          		<a class="book_85417" href="/books/85417">Show</a> |
-          		<a class="back" href="/books">Back</a>
+              <%= link_to "Show", book_path(@book) %>
+              <%= link_to "Back", books_path %>
           </div>
         </div>
       </div>
